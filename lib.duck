@@ -5,6 +5,8 @@
 --   quack [migrate "git+konacodes/discord" as dc]
 --   quack [dc.discord-send token channel-id "Hello!"]
 
+quack [migrate "git+konacodes/quests@v1.0.0" as quest]
+
 -- =============================================================================
 -- Configuration
 -- =============================================================================
@@ -58,7 +60,7 @@ quack [define discord-send taking [token, channel-id, content] as
 
   quack [attempt
     quack [let response be http-post(url, payload, headers)]
-    quack [if response.status >= 200 and response.status < 300 then
+    quack [if quest.is-ok(response) then
       quack [return json-parse(response.body)]
     otherwise
       quack [print f"Discord API error: {response.status}"]
@@ -78,7 +80,7 @@ quack [define discord-send-embed taking [token, channel-id, title, description, 
 
   quack [attempt
     quack [let response be http-post(url, payload, headers)]
-    quack [if response.status >= 200 and response.status < 300 then
+    quack [if quest.is-ok(response) then
       quack [return json-parse(response.body)]
     otherwise
       quack [print f"Discord API error: {response.status}"]
@@ -98,7 +100,7 @@ quack [define discord-reply taking [token, channel-id, message-id, content] as
 
   quack [attempt
     quack [let response be http-post(url, payload, headers)]
-    quack [if response.status >= 200 and response.status < 300 then
+    quack [if quest.is-ok(response) then
       quack [return json-parse(response.body)]
     otherwise
       quack [return nil]
