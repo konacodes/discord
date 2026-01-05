@@ -5,7 +5,7 @@ A quack-tastic Discord API library for building bots in Duck-lang!
 ## Installation
 
 ```bash
-goose install konacodes/discord v0.1.0
+goose install konacodes/discord v0.2.0
 ```
 
 ## Usage
