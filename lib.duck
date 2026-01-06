@@ -5,7 +5,7 @@
 --   quack [migrate "git+konacodes/discord" as dc]
 --   quack [dc.discord-send token channel-id "Hello!"]
 
-quack [migrate "git+konacodes/quests@v1.1.0" as quest]
+quack [migrate "git+konacodes/quests@v1.1.2" as quest]
 
 -- =============================================================================
 -- Configuration
